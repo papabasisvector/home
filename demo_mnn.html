@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minje Kim's Home</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo container">
+					<div>
+						<h2><a id="logo">Modular Neural Networks</a></h2>
+											 <p>— Collaborative Deep Learning for Speech Enhancement</p>
+
+					</div>
+				</div>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav" class="skel-layers-fixed">
+				<ul>
+					<li><a href="index.html">Home <br>(Contact)</a></li>
+					<li class="current">
+						<a href="">Projects<br> (Demo)</a>
+						<ul>
+							<li><a href="demo_bnn.html">Bitwise Neural Networks</a></li>
+							<li><a href="demo_mnn.html">Modular Neural Networks</a></li>
+							<li><a href="demo_cae.html">Collaborative Audio Enhancement</a></li>
+							<li><a href="demo_irregularnmf.html">Irregular Matrix Factorization</a></li>
+							<li><a href="demo_manifold.html">Manifold Preserving Source Separation</a></li>
+							<li><a href="demo_defnmf.html">Deflation Methods for NMF</a></li>							
+							<li><a href="demo_old.html">Some Old Projects</a></li>
+						</ul>
+					</li>
+					<li><a href="education.html">Education<br> & Work</a></li>		
+					<li><a href="awards.html">Honors <br>& Awards</a></li>										
+					<li><a href="papers/index.html">Publication <br>& Patents</a></li>
+					<li><a href="teaching.html">Advising <br>& Teaching</a></li>															
+					<li><a href="prof_acts.html">Professional<br> Activities</a></li>					
+					<li><a href="ext_acts.html">Extracurricular<br> Activities</a></li>					
+					<li><a href="cv_minjekim.pdf" target=_blank>CV<br> (PDF)</a></li>					
+					<li><a href="http://scholar.google.com/citations?user=hEfnFKAAAAAJ&hl=en" target=_blank>Google<br> Scholar</a></li>				
+				</ul>
+			</nav>
+
+		
+		<!-- Main -->
+			<div id="main-wrapper">
+				<div id="main" class="container">
+					<div class="row">
+						<div class="12u">
+							<div class="content">
+							
+								<!-- Content -->
+						
+									<article class="box page-content">
+
+<!-- 
+										<header>
+<!~~ 
+											<ul class="meta">
+												<li class="icon fa-clock-o">5 days ago</li>
+												<li class="icon fa-comments"><a href="#">1,024</a></li>
+											</ul>
+ ~~>
+										</header>
+ -->
+
+										
+										Our dream is to develop a universal speech enhancement system that can deal with all the different kinds of corruption and variation a speech signal can go through: speaker-specific characteristics, reverberation, interfering noise, cross talk, band-pass filtering, clipping, etc. We know that the hypothetical universal speech enhancement system might be a gigantic Deep Neural Network with a complicated network structure. But, what if it's easier to train a smaller and simpler system (e.g. a shallower and narrower DNN), which is specialized for removing only one kind of artifact? What if a few such systems are already available, and the best result among them is comparable to what we want from the hypothetical universal speech enhancement system? If there is a method that can choose the best model out of the candidate specialized systems, we can combine them to build the universal speech enhancement system. <br><br>
+										
+										This approach is beneficial in a lot of sense under certain conditions. First, we can reuse all those already-trained DNNs as our <em>modules</em> instead of training the all-purpose gigantic DNN from scratch. If the participating modules are DNNs with a simpler network topology and are easier to train, we can build the desired universal speech enhancement system easier and faster. Second, the proposed approach is more scalable. If the proposed system needs to handle a newly observed type of corruption, we can quickly learn a module specialized for the new training examples, and add it to the pool of candidates.<br><br>
+										
+										The main goal of this work is to devise a moderator, whose job is to choose the best module for an unseen test mixture. Although potentially this job could be done by a classifier, I took another path. The main reason is that learning the classifier is not an easy job as it needs to be trained on all the training sets collected so far. Moreover, this discriminative classifier is not very scalable to the new training set. Instead, I trained an AutoEncoder (AE) by using pure speech spectra only. As an AE's training goal is to minimize the error between the input and the output, the AE I trained using clean speech should produce clean speech for a clean input speech. I use this AE reconstruction error as a measurement to assess the quality of all the module-specific intermediate speech enhancement results. The basic idea is this: (a) I feed the intermediate modular outputs to the speech AE, and check their AE reconstruction error (b) I choose the one that creates the least AE error as it will be the most similar one to clean speech (according to the definition of the AE). <br><br>
+										
+<center><img src="demo/mnn_diagram.png" width="700px"></center><br><br>
+										
+										The performance of this model selection mechanism is great. The AE is very successful at selecting the best module (note that it deals with test signals without any ground-truth targets). I call this a <em>Collaborative Deep Learning</em> for speech enhancement, as we can harmonize whatever DNN for speech enhancement, if its job is to predict cleaned-up speech.<br><br><br><br>
+
+
+<h3>Reference </h3>
+Minje Kim, "<a href="papers/icassp2017_mkim.pdf" target=_blank>Collaborative Deep Learning for Speech Enhancement: A Run-Time Model Selection Method Using Autoencoders</a>," in Proceedings of the IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP), New Orleans, LA, March 5-9, 2017. 
+
+		
+		
+										
+
+									</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="container">
+<!-- 
+				<div class="row 200%">
+					<div class="12u">
+
+						<!~~ About ~~>
+							<section>
+								<h2 class="major"><span>What's this about?</span></h2>
+								<p>
+									This is <strong>TXT</strong>, yet another free responsive site template designed by
+									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
+									<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
+									whatever you're working on (personal or commercial), just be sure to give us credit for the design.
+									That's basically it :)
+								</p>
+							</section>
+
+					</div>
+				</div>
+ -->
+				<div class="row 200%">
+					<div class="12u">
+
+						<!-- Contact -->
+							<section>
+								<h2 class="major"><span>Get in touch</span></h2>
+								<ul class="contact">
+									<li><a class="icon fa-linkedin" href="https://www.linkedin.com/in/minje"><span class="label">Linkedin</span></a></li>
+<!-- 
+									<li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+									<li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+									<li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+									<li><a class="icon fa-google-plus" href="#"><span class="label">Google+</span></a></li>
+ -->
+								</ul>
+							</section>
+					
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; Minje Kim. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</footer>
+
+	</body>
+</html>

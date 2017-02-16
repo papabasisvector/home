@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minje Kim's Home</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo container">
+					<div>
+						<h2><a id="logo">Adaptive Modeling of Unknown Noise</a></h2>
+											<p>— A Deflation Method for NMF</p>
+
+					</div>
+				</div>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav" class="skel-layers-fixed">
+				<ul>
+					<li><a href="index.html">Home <br>(Contact)</a></li>
+					<li class="current">
+						<a href="">Projects<br> (Demo)</a>
+						<ul>
+							<li><a href="demo_bnn.html">Bitwise Neural Networks</a></li>
+							<li><a href="demo_mnn.html">Modular Neural Networks</a></li>
+							<li><a href="demo_cae.html">Collaborative Audio Enhancement</a></li>							
+							<li><a href="demo_irregularnmf.html">Irregular Matrix Factorization</a></li>
+							<li><a href="demo_manifold.html">Manifold Preserving Source Separation</a></li>
+							<li><a href="demo_defnmf.html">Deflation Methods for NMF</a></li>							
+							<li><a href="demo_old.html">Some Old Projects</a></li>
+						</ul>
+					</li>
+					<li><a href="education.html">Education<br> & Work</a></li>		
+					<li><a href="awards.html">Honors <br>& Awards</a></li>										
+					<li><a href="papers/index.html">Publication <br>& Patents</a></li>
+					<li><a href="teaching.html">Advising <br>& Teaching</a></li>															
+					<li><a href="prof_acts.html">Professional<br> Activities</a></li>					
+					<li><a href="ext_acts.html">Extracurricular<br> Activities</a></li>					
+					<li><a href="cv_minjekim.pdf" target=_blank>CV<br> (PDF)</a></li>					
+					<li><a href="http://scholar.google.com/citations?user=hEfnFKAAAAAJ&hl=en" target=_blank>Google<br> Scholar</a></li>				
+				</ul>
+			</nav>
+
+		
+		<!-- Main -->
+			<div id="main-wrapper">
+				<div id="main" class="container">
+					<div class="row">
+						<div class="12u">
+							<div class="content">
+							
+								<!-- Content -->
+						
+									<article class="box page-content">
+
+<!-- 
+										<header>
+<!~~ 
+											<ul class="meta">
+												<li class="icon fa-clock-o">5 days ago</li>
+												<li class="icon fa-comments"><a href="#">1,024</a></li>
+											</ul>
+ ~~>
+										</header>
+ -->
+										<em>In this project, I want to do come up with a deflation method for NMF, where we learn the NMF basis vectors one by one in the order of importance.	See my paper for more details: <br>
+										Minje Kim and Paris Smaragdis (2014), "<a href="papers/globalsip2014_mkim.pdf" target=_blank>Efficient Model Selection for Speech Enhancement Using a Deflation Method for Nonnegative Matrix Factorization</a>," in Proceedings of the IEEE Global Conference on Signal and Information Processing (Global SIP), Atlanta, GA, December 3-5, 2014.</em>
+										<br><br><br><br>
+										Nonnegative Matrix Factorization (NMF) is a useful tool in source separation / speech enhancement applications, particularly if we have one and the only one recording of all sources mixed up. One of the big challenges in NMF-based source separation systems is though, that we have to start from a fixed model complexity, or the number of basis vectors. This limitation can cause some problems from time to time when it comes to the sources without a priori information.
+										 <br><br>
+										For example, say that we analyze a music signal of three notes, 
+										<center><img src="demo/defnmf_3notes.png" width="400px"></center>										
+										and let's assume that we don't know the number of notes in there in advance. If we run the good old NMF multiplicative update rules with the three assumed bases, we learn this result:
+										<center><img src="demo/defnmf_3notes_3bases.png" width="500px"></center>																				
+										So far so good. What if we made a wrong guess and learned the model with 2 bases? We get this:
+										<center><img src="demo/defnmf_3notes_2bases.png" width="480px"></center>
+										What about only 1 basis vector?										
+										<center><img src="demo/defnmf_3notes_1bases.png" width="450px"></center>
+										The thing is, NMF tries its best to approximate the input matrix with a product of smaller factor matrices, <em>W</em> and <em>H</em>, and during the procedure, it doesn't care if the approximation exceeds the input values. In the above example with only one basis, we see that the learned basis vector is actually an average of the spectrogram along the time axis, and the reconstruction matrix generates some spurious harmonics peaks here and there, which make the reconstruction bigger than the input at some TF bins.
+										<br><br>
+										What I'm trying to say is that the NMF results from the rank-3 assumption (I mean three basis vectors to learn) are not the sum of three different rank-1 NMF runs, each of which is with only one basis vector. That's why we need a good guess about the number of components in the first place. Otherwise, we cannot reuse the NMF results from wrong guesses. What a waste of time.
+										<br><br>
+										In this project, I want to come up with a deflation method for NMF, where we learn the NMF basis vectors one by one in the order of importance. For example in the 3-notes example, we first learn a basis for the third and the longest note,
+										<center><img src="demo/defnmf_3notes_def1.png" width="800px"></center>
+										and then the second longest one,
+										<center><img src="demo/defnmf_3notes_def2.png" width="800px"></center>
+										and finally the first and the shortest one:
+										<center><img src="demo/defnmf_3notes_def3.png" width="800px"></center>
+										Note that the residual at each round is fed to the input to the next round, as if it was a new nonnegative input spectrogram. 
+										<br><br>										
+										<br><br>
+										<center><img src="demo/defnmf_psy.png" width="950px"></center>
+										Another interesting example can be found in feature extraction from images of human faces. In the figures above, we see that the five input pictures are from a same guy who likes to wear sunglasses. If we apply the deflation NMF method to the input matrix of five pictures (we vectorize each image into a long column vector to make up the input matrix of five columns), we see that in the first learned component we recover some holistic face image of this guy. Since he likes to wear sunglasses, and the sunglasses are represented with black pixels in the images, we see that the first component is with those black pixels by default. Having the second component as the second most important thing to cover the difference in the facial expressions, the third component finally learns the bare eyes that are represented as the residual in the first image after subtracting the most significant components. Note that this kind of order of components is not available from the ordinary NMF runs.
+										<br><br>
+										We extend this concept to the semi-supervised speech enhancement case where we don't know the characteristics about the noise. To learn the noise bases, a common technique is to learn them from the test signals, with a magically guessed number of components (that's actually the only data we have about the noise). With the proposed deflation method however, we can start from a small number of noise bases, and if we're not satisfied, we can keep adding more bases until the system models the test signal with a small enough error. This is of course a more complicated procedure than an oracle NMF model with the best chosen number of components, but is less complicated than the worst case scenario where we have to search for the best number of components through different runs of the standard NMF. 
+										<center><img src="demo/defnmf_sdr.png" width="400px"></center>
+										Another thing is that the deflation model can be even better than the globally optimal oracle NMF results, because there is no guarantee that the globally optimal number of noise components might be the best locally, when it comes to the non-stationary noise. For example, if the interfering train noise stops at some point, there's no point learning noise bases at that time. The deflation NMF model can handle this situation better. 
+										<br><br>
+										The deflation method somehow corresponds to the eigendecomposition-based techniques, such as PCA, where we naturally know the order of importance using eigenvalues. It is a greedy method that extracts the most important component first, while leaving a NONNEGATIVE residual, so that the system can pursue another component if it wishes. During the optimization, therefore, we assume an additional term to capture the nonnegative residual part along with the ordinary factor matrices we learn, something like <em>D(X|WH+R)</em>, where <em>D</em> is any error function we use. 
+										<br><br>
+										The explicit use of the nonnegative residual term <em>R</em> prevents the approximation done by <em>WH</em> from exceeding <em>X</em>. This is the concept called <em>under-approximation</em>. The deflation method for NMF has an interesting connection to the <em>Hierarchical Dirichlet Process</em>, where a topic model is learned with potentially infinite number of components, also with the order of importance. However, the deflation method for NMF has its own merit, such as the freedom of choosing any beta-divergence, on top of the <em>beta=1</em> case that corresponds to the probabilistic topic models. Also, the deflation method is more flexible in choosing the model complexity by allowing the system to stop adding components at any point, while sacrificing the approximation performance due to its greedy nature.
+
+									</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="container">
+<!-- 
+				<div class="row 200%">
+					<div class="12u">
+
+						<!~~ About ~~>
+							<section>
+								<h2 class="major"><span>What's this about?</span></h2>
+								<p>
+									This is <strong>TXT</strong>, yet another free responsive site template designed by
+									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
+									<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
+									whatever you're working on (personal or commercial), just be sure to give us credit for the design.
+									That's basically it :)
+								</p>
+							</section>
+
+					</div>
+				</div>
+ -->
+				<div class="row 200%">
+					<div class="12u">
+
+						<!-- Contact -->
+							<section>
+								<h2 class="major"><span>Get in touch</span></h2>
+								<ul class="contact">
+									<li><a class="icon fa-linkedin" href="https://www.linkedin.com/in/minje"><span class="label">Linkedin</span></a></li>
+<!-- 
+									<li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+									<li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+									<li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+									<li><a class="icon fa-google-plus" href="#"><span class="label">Google+</span></a></li>
+ -->
+								</ul>
+							</section>
+					
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; Minje Kim. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</footer>
+
+	</body>
+</html>

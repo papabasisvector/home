@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minje Kim's Home</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo container">
+					<div>
+						<h2><a id="logo">Collaborative Audio Enhancement</a></h2>
+											<p>— Crowdsource Your Recording</p>
+
+					</div>
+				</div>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav" class="skel-layers-fixed">
+				<ul>
+					<li><a href="index.html">Home <br>(Contact)</a></li>
+					<li class="current">
+						<a href="">Projects<br> (Demo)</a>
+						<ul>
+							<li><a href="demo_bnn.html">Bitwise Neural Networks</a></li>
+							<li><a href="demo_mnn.html">Modular Neural Networks</a></li>
+							<li><a href="demo_cae1.html">Collaborative Audio Enhancement</a></li>
+							<li><a href="demo_irregularnmf.html">Irregular Matrix Factorization</a></li>
+							<li><a href="demo_manifold.html">Manifold Preserving Source Separation</a></li>
+							<li><a href="demo_defnmf.html">Deflation Methods for NMF</a></li>							
+							<li><a href="demo_old.html">Some Old Projects</a></li>
+						</ul>
+					</li>
+					<li><a href="education.html">Education<br> & Work</a></li>		
+					<li><a href="awards.html">Honors <br>& Awards</a></li>										
+					<li><a href="papers/index.html">Publication <br>& Patents</a></li>
+					<li><a href="teaching.html">Advising <br>& Teaching</a></li>															
+					<li><a href="prof_acts.html">Professional<br> Activities</a></li>					
+					<li><a href="ext_acts.html">Extracurricular<br> Activities</a></li>					
+					<li><a href="cv_minjekim.pdf" target=_blank>CV<br> (PDF)</a></li>					
+					<li><a href="http://scholar.google.com/citations?user=hEfnFKAAAAAJ&hl=en" target=_blank>Google<br> Scholar</a></li>				
+				</ul>
+			</nav>
+
+		
+		<!-- Main -->
+			<div id="main-wrapper">
+				<div id="main" class="container">
+					<div class="row">
+						<div class="12u">
+							<div class="content">
+							
+								<!-- Content -->
+						
+									<article class="box page-content">
+
+<!-- 
+										<header>
+<!~~ 
+											<ul class="meta">
+												<li class="icon fa-clock-o">5 days ago</li>
+												<li class="icon fa-comments"><a href="#">1,024</a></li>
+											</ul>
+ ~~>
+										</header>
+ -->
+
+		
+										<center><img src="demo/cae1_scenario.png" width="600px"></center>
+										<br>
+										Such as in crowdsourcing, the project aims to improve the quality of the recordings from audio scenes, e.g. music concerts, talks, lectures, etc, by separating out the only interesting sources from multiple low-quality user-created recordings. This could be seen as a challenging microphone array setting with channels that are not synched, defected in unique ways, with different sampling rates. <br>
+										<center><img src="demo/cae1_example.png" width="900px"></center>
+										<br><br>
+										We achieve the separation by using an extended probabilistic topic model that enables sharing of some topics (sources) across the recordings. To put it another way, we do the usual matrix factorization for each recording, but fix some of the sources	to be the same (with different global weights) across the simultaneous factorizations for	all recordings.
+										<br><br>
+										<center><img src="demo/cae1_factorization.png" width="700px"></center>
+										<br><br>
+										We could get better separation from some synthetic concert recordings than the oracle matrix factorization results with ideal bases pre-learned from the ground truth clean recording. We plan to accelerate this	algorithm so that it can cope with a really big audio dataset.
+										<br><br>
+										<center><img src="demo/cae1_results.png" width="600px"> </center>
+										Check out our award-winning paper about this project: "<a href="papers/icassp2013_mkim.pdf" target=_blank>Collaborative Audio Enhancement Using Probabilistic Latent Component Sharing</a> (ICASSP 2013)"<br>
+										And some audio clips:
+										<ul style="list-style-type: disc; margin-left: 2em;"> 
+										<li>Input#1: low-pass filtered recording (8kHz) with a speech interference (<a href="demo/cae1_input1.wav" target=_blank>wav</a>)</li>
+										<li>Input#2: high-pass filtered recording (500Hz) with another speech interference (<a href="demo/cae1_input2.wav" target=_blank>wav</a>)</li>
+										<li>Input#3: low-pass filtered (11.5Hz) and high-pass filtered (500kHz) recording with clipping artifacts (<a href="demo/cae1_input3.wav" target=_blank>wav</a>)</li>
+										<li>Enhanced audio using PLCS plus both priors (<a href="demo/cae1_output.wav" target=_blank>wav</a>)</li>
+										</ul>
+										If you're curious about extending this algorithm to a bigger scale, say processing 1,000 recordings, please find the sequel below, or my <a href="papers.html#icassp2016_mkim" target=_blank>ICASSP 2016 paper</a>.<br><br>
+										
+										<hr>
+										
+										<center><img src="demo/cae2_scenario.png" width="700px"></center>
+										<br>
+										In the second phase of this project, we expanded our experiments into the case with a lot more microphones involved (1000 sensors in the scene, the blue dots in the picture above). Now the goal is to extract the dominant source (filled diamond in the middle of the picture) out of those 1000 recordings. If this job is done manually, someone has to listen to all the 1000 recordings, and pick out the best one based on his or her perceptually quality assessment, which is a tedious, difficult, and expensive job to do. The selection will give the results ranging from the worst recording to the best one. Note that in the worst recording, someone else' voice was recorded loudly rather than the dominant source of interest.<br>
+										<ul style="list-style-type: disc; margin-left: 2em;"> 
+										<li>Dominant source (<a href="demo/cae2_source.wav" target=_blank>wav</a>)</li>
+										<li>The worst recording (<a href="demo/cae2_worst_recording.wav" target=_blank>wav</a>)</li>
+										<li>The best recording (<a href="demo/cae2_best_recording.wav" target=_blank>wav</a>)</li>
+										</ul>
+										Once again, we want to achieve the separation by using an extended probabilistic topic model that enables sharing of some topics (sources) across the recordings. However, this procedure calls for a lot of computation on all the 1000 different recordings at every EM update. First, it is not very efficient particularly if there are too many recordings to deal with (we're talking about an ad-hoc microphone array where the potential number of sensors is as many as the number of people in the crowd). Second, most of those recordings that are far from the dominant source of interest or the ones with severe artifacts don't really contribute to the reconstruction of the source of interest anyway. Therefore, paying attention to those far-away / low-quality recordings is a waste of computation.
+										<br><br>
+										<center><img src="demo/cae2_nn.png" width="500px"></center>
+										<br><br>
+										Our idea to get round this computational complexity issue is to focus on the nearest neighbors at every EM rather than the whole. In the figure above, we can see that topic modeling can find similar convex hulls (the green polytope wrapping the data points) whether or not we have those non-neighboring data samples during the process. Actually, what we believe is that focusing on those neighbors of current topics (corners of the polytope) will give us not only the speed-up, but the better results, because otherwise M-step spends a lot of time extracting out a small amount of contribution from those non-neighboring observations.										
+										<br><br>
+										The nearest neighbor search can take much time though. If we do this search in an exhaustive way, something based on a proper distance metric, such as cross entropy between the normalized magnitude spectrograms of recordings and that of the reconstructed source, the overhead introduced by the search will diminish the speed-up. Instead, we can do this search based on Hamming distance calculated from hash codes of those spectrograms, because calculating Hamming distance can be done in a cheaper way by using the bitwise operations. If we find 3K pseudo neighbors with respect to Hamming distance in the first place, and then perform the exhaustive search only on the 3K candidates rather than the whole, we can construct the K-neighbor set in a fast way. 
+										<center><img src="demo/cae2_results1.png" width="500px"><img src="demo/cae2_results2.png" width="500px"> </center>										
+										Indeed, when we do the EM updates only on those K-neighbors with an adequate choice of K (5 to 20% of the total number of recordings, blue, red and orange lines in the "Cross Entropy" case), we can get better separation performances than the full component sharing topic model (green line in the picture). This first experiment is with the cross entropy as the distance measure (more specifically, the divergence measure). The next one "With Hashing" case shows the proposed two-stage procedure, where we find 3K candidate neighbors using hashing in the first round, and then narrow down to the actual neighbors using cross entropy at the second round. Except the hiccups with the 5% case (blue line), where we use too small number of recordings, we can say that the two-stage method gives almost as good performance as the comprehensive search with cross entropy only.
+<br> <br>
+Check out how they sound!
+
+										<ul style="list-style-type: disc; margin-left: 2em;"> 
+										<li>Naive median filtering of magnitude spectrograms (<a href="demo/cae2_output_median.wav" target=_blank>wav</a>)</li>
+										<li>The results from the proposed method (<a href="demo/cae2_output_nn.wav" target=_blank>wav</a>)</li>
+										<li>The worst recording (<a href="demo/cae2_output_worst.wav" target=_blank>wav</a>)</li>
+										</ul>
+										
+										Check out our papers about this project:<br>
+										<ul style="list-style-type: disc; margin-left: 2em;"> 
+										<li>"<a href="papers/nips2014_mkim.pdf" target=_blank>Collaborative Audio Enhancement: Crowdsourced Audio Recording</a>" (2014 NIPS Workshop on Crowdsourcing and Machine Learning)<br></li>
+										<li><a href="papers.html#icassp2016_mkim" target=_blank>"Efficient Neighborhood-Based Topic Modeling for Collaborative Audio Enhancement on Massive Crowdsourced Recordings</a>," ICASSP 2016</li>
+										</ul>
+										
+										
+										
+										
+										<p style="padding:6px; color:888888; border: black 1px solid">&#8251; This material is based upon work supported by the National Science Foundation under Grant: <a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1319708&HistoricalAwards=false" target=_blank>III: Small: MicSynth: Enhancing and Reconstructing Sound Scenes from Crowdsourced Recordings</a>. <em>Award #:1319708</em><br>
+								<em>Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</em></p>			
+										<br><br>		
+
+									</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="container">
+<!-- 
+				<div class="row 200%">
+					<div class="12u">
+
+						<!~~ About ~~>
+							<section>
+								<h2 class="major"><span>What's this about?</span></h2>
+								<p>
+									This is <strong>TXT</strong>, yet another free responsive site template designed by
+									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
+									<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
+									whatever you're working on (personal or commercial), just be sure to give us credit for the design.
+									That's basically it :)
+								</p>
+							</section>
+
+					</div>
+				</div>
+ -->
+				<div class="row 200%">
+					<div class="12u">
+
+						<!-- Contact -->
+							<section>
+								<h2 class="major"><span>Get in touch</span></h2>
+								<ul class="contact">
+									<li><a class="icon fa-linkedin" href="https://www.linkedin.com/in/minje"><span class="label">Linkedin</span></a></li>
+<!-- 
+									<li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+									<li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+									<li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+									<li><a class="icon fa-google-plus" href="#"><span class="label">Google+</span></a></li>
+ -->
+								</ul>
+							</section>
+					
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; Minje Kim. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</footer>
+
+	</body>
+</html>

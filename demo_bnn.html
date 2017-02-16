@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minje Kim's Home</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo container">
+					<div>
+						<h2><a id="logo">Bitwise Neural Networks</a></h2>
+											 <p>— Resource-Efficient Deep Learning</p>
+
+					</div>
+				</div>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav" class="skel-layers-fixed">
+				<ul>
+					<li><a href="index.html">Home <br>(Contact)</a></li>
+					<li class="current">
+						<a href="">Projects<br> (Demo)</a>
+						<ul>
+							<li><a href="demo_bnn.html">Bitwise Neural Networks</a></li>
+							<li><a href="demo_mnn.html">Modular Neural Networks</a></li>
+							<li><a href="demo_cae.html">Collaborative Audio Enhancement</a></li>
+							<li><a href="demo_irregularnmf.html">Irregular Matrix Factorization</a></li>
+							<li><a href="demo_manifold.html">Manifold Preserving Source Separation</a></li>
+							<li><a href="demo_defnmf.html">Deflation Methods for NMF</a></li>							
+							<li><a href="demo_old.html">Some Old Projects</a></li>
+						</ul>
+					</li>
+					<li><a href="education.html">Education<br> & Work</a></li>		
+					<li><a href="awards.html">Honors <br>& Awards</a></li>										
+					<li><a href="papers/index.html">Publication <br>& Patents</a></li>
+					<li><a href="teaching.html">Advising <br>& Teaching</a></li>															
+					<li><a href="prof_acts.html">Professional<br> Activities</a></li>					
+					<li><a href="ext_acts.html">Extracurricular<br> Activities</a></li>					
+					<li><a href="cv_minjekim.pdf" target=_blank>CV<br> (PDF)</a></li>					
+					<li><a href="http://scholar.google.com/citations?user=hEfnFKAAAAAJ&hl=en" target=_blank>Google<br> Scholar</a></li>				
+				</ul>
+			</nav>
+
+		
+		<!-- Main -->
+			<div id="main-wrapper">
+				<div id="main" class="container">
+					<div class="row">
+						<div class="12u">
+							<div class="content">
+							
+								<!-- Content -->
+						
+									<article class="box page-content">
+
+<!-- 
+										<header>
+<!~~ 
+											<ul class="meta">
+												<li class="icon fa-clock-o">5 days ago</li>
+												<li class="icon fa-comments"><a href="#">1,024</a></li>
+											</ul>
+ ~~>
+										</header>
+ -->
+
+										<center><img src="demo/bnn_scenario.png" width="700px"></center>
+										
+										<h3> Motivation: Why Binaries? </h3>
+										What if you want to do some real-time face detection / recognition using a deep learning system running on a pair of glasses? What if you want to listen to what's going on around you by allowing your cellphone to record all the audio signals and letting a neural network analyze them 24/7? What if you want your smart watches to be actually smart and do some intelligent jobs for us by recognizing events from all the sensory signals using a lightweight AI running on them? Overall, my question is, do the small devices afford a deep neural network under all those constraints, such as limited batteries, memory spaces, clocks, etc? If not, what can we do to make it happen?<br><br>
+
+Bitwise Neural Networks (BNN) are an extremely compact, yet powerful kind of neural networks. We all are accustomed to the complexity of training a deep neural network, and willing to supply expensive GPU cards for faster backpropagation on big training data. However, the technology we need for the efficient forwardprop on a very small device is different from that. A BNN is defined by all binary numbers. I mean, all binaries — its input signals, output signals, hidden unit outputs, weights, and bias. It's different from a discretization or quantization technique that tries to represent a real-valued number with a set of binaries, like in floating-point or fixed-point encodings. Instead, in BNN a real-valued number is replaced with a bit.<br><br>
+
+Why binaries? First, binaries are cheap to store. If you compare a 64bit floating-point representation, or a very efficient 7bit fixed-point encoding, with a bit, it's apparent that the single bit representation uses 1/64 or 1/7 of space the other representations occupy. Second, binaries are cheap to compute. When it comes to bipolar binaries (-1 and +1), the multiplication can be done by using a single gate, XNOR. An addition corresponds to counting of ones. Activation functions? We use sign() function, which is nothing but a comparison-based thresholding in BNN. Therefore, the gate logic is extremely simple, and the computation is really fast without having to use a lot of power. <br><br>
+
+<center><img src="demo/bnn_fp.png" width="900px"><br>
+<i>A forwardprop in a real-valued network versus in a BNN</i></center><br>
+
+<center><img src="demo/bnn_comparison1.png" width="900px"><br>
+<i>Complexities of a floating-point network</i></center><br>
+<center><img src="demo/bnn_comparison2.png" width="900px"><br>
+<i>Complexities of a BNN</i></center><br>
+
+In theory, there exists a BNN that learns all the Boolean associations between the input and output pairs if we're allowed to use many hidden units. For instance, as for the famous XOR problem, <br><br>
+
+<center><img src="demo/bnn_xor_hyperplanes.png" width="400px"></center><br>
+
+the binary weights are just one of the possible real-valued solutions. The performance of a bitwise network is not different from a comprehensive one, when it comes to an XOR problem. <br><br>
+
+<center><img src="demo/bnn_xor_net.png" width="400px"></center><br>
+
+Of course, eventually BNNs have to call for more hyperplanes to do the same complicated job, which might increase the network size. For instance, in the figure below, we need more than one binary-valued hyperplanes for this linearly separable problem. But, please note that the bigger BNN doesn't always mean that it's more complicated than a smaller real-valued network, because per node cost is a lot cheaper in BNN.<br><br>
+
+<center><img src="demo/bnn_cube.png" width="400px"></center><br>
+
+<h3>Does It Work Well? </h3>
+
+They are all good to know, but then I can expect a reasonable question. Does it work well? Well, I'd say it all depends on how we train the network. But, I don't think the learning algorithm should be really complicated. Long story short, I succeeded in training this kind of extreme network by just doing backprop twice. In the first round, we learn a set of network parameters whose dynamic range is bounded between -1 and +1. Then, in the second round, we initialize the network parameters from the first round results, and do some usual alternating forwardprop / backprop procedure, but we binarize all the parameters during the forwardprop so that the network is aware of the harsh goal. There are some other usual stuff, such as regularization, dropout, and everything, but that's the basic story.<br><br>
+
+Binarizing the input signals is challenging, too. One can come up with a hashing technique that preserves the locality or semantic of the original data, then it serves as a binary feature set. I've tried Winner-Take-All hashing for this, and it works reasonably well. But, if we just do a usual population based quantization, followed by scattering all the bit string to the input nodes so that a node takes a bit rather than a set of bits to represent a real number, they just serve as the binary input successfully. <br><br>
+
+So, once again, does it work? Yes, it does for some experiments that I tried. Actually, it works surprisingly well for MNIST (hand-written digit) classification, and works reasonably well for phoneme classification as well. <br><br>
+
+<center><img src="demo/bnn_mnist.png" width="800px"></center><br><br>
+
+<h3>BNN for Speech Denoising</h3>
+
+As deep learning becomes popular nowadays in audio researches as well, I went ahead and built a bitwise denoising autoencoder, which takes binarized magnitude spectra of a noisy signal as its input and produces their cleaned-up versions. For example, for a given magnitude Fourier coefficient, we can quantize it into 2bit integer, and then spread those two bits into two input nodes rather than as a single integer input to each node. Therefore, a spectrum with N coefficients is handled with 2N input units in this BNN. 
+
+<center><img src="demo/bnn_dae_input.png" width="400px"></center><br><br>
+
+As for the output, it's straightforward to train the network to learn the Ideal Binary Masks, which are a very natural binary representation that indicate whether a spectrum element belongs to the desired source or not.
+
+I trained this network with 10 random TIMIT speakers' speech mixed up with 4 different non-stationary noise types. Then, the network is tested on another set of 5 random speakers with one different type of noise. The network has 2 hidden layers, each of which has 2048 hidden units. The results from this fully-binary bitwise denoising autoencoder gives very decent separation quality (around 10dB in SDR, 25dB in SIR, and 10dB in SAR), and they sound like this:
+
+<ul style="list-style-type: disc; margin-left: 2em;"> 
+	<li>The noisy input (<a href="demo/bnn_x.wav" target=_blank>wav</a>)</li>
+	<li>The denoised version from BNN (<a href="demo/bnn_sr.wav" target=_blank>wav</a>)</li>
+	<li>The ground-truth clean speech (<a href="demo/bnn_s.wav" target=_blank>wav</a>)</li>
+</ul>
+
+<h3>Reference </h3>
+
+Please check out <a href="papers/icml2015_mkim.pdf" target=_blank>my paper in ICML 2015 Workshop on Resource-Efficient Machine Learning</a> for more details. This work has been also selected as a <a href="https://www.qualcomm.com/invention/research/university-relations/innovation-fellowship/finalists" target=_blank>finalist of the Qualcomm Innovation Fellowship 2015</a>. 
+
+		
+		
+										
+
+									</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="container">
+<!-- 
+				<div class="row 200%">
+					<div class="12u">
+
+						<!~~ About ~~>
+							<section>
+								<h2 class="major"><span>What's this about?</span></h2>
+								<p>
+									This is <strong>TXT</strong>, yet another free responsive site template designed by
+									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
+									<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
+									whatever you're working on (personal or commercial), just be sure to give us credit for the design.
+									That's basically it :)
+								</p>
+							</section>
+
+					</div>
+				</div>
+ -->
+				<div class="row 200%">
+					<div class="12u">
+
+						<!-- Contact -->
+							<section>
+								<h2 class="major"><span>Get in touch</span></h2>
+								<ul class="contact">
+									<li><a class="icon fa-linkedin" href="https://www.linkedin.com/in/minje"><span class="label">Linkedin</span></a></li>
+<!-- 
+									<li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+									<li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+									<li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+									<li><a class="icon fa-google-plus" href="#"><span class="label">Google+</span></a></li>
+ -->
+								</ul>
+							</section>
+					
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; Minje Kim. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</footer>
+
+	</body>
+</html>

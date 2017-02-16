@@ -1,0 +1,1 @@
+[11-Jun-2015 15:56:22 America/Denver] PHP Warning:  include(): Failed opening '../tail.html' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home2/trustmys/public_html/minjekim/papers/index.php on line 347
