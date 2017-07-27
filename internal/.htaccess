@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Staff Only"
+AuthUserFile /internal/.htvotmdnjem
+require valid-user
