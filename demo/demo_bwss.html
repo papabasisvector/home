@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minje Kim's Home</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo container">
+					<div>
+						<h2><a id="logo">Bitwise Neural Networks</a></h2>
+											 <p>— Resource-Efficient Deep Learning</p>
+
+					</div>
+				</div>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav" class="skel-layers-fixed">
+				<ul>
+					<li><a href="index.html">Home <br>(Contact)</a></li>
+					<li class="current">
+						<a href="">Projects<br> (Demo)</a>
+						<ul>
+							<li><a href="demo_bnn.html">Bitwise Neural Networks</a></li>
+							<li><a href="demo_mnn.html">Modular Neural Networks</a></li>
+							<li><a href="demo_cae.html">Collaborative Audio Enhancement</a></li>
+							<li><a href="demo_irregularnmf.html">Irregular Matrix Factorization</a></li>
+							<li><a href="demo_manifold.html">Manifold Preserving Source Separation</a></li>
+							<li><a href="demo_defnmf.html">Deflation Methods for NMF</a></li>							
+							<li><a href="demo_old.html">Some Old Projects</a></li>
+						</ul>
+					</li>
+					<li><a href="education.html">Education<br> & Work</a></li>		
+					<li><a href="awards.html">Honors <br>& Awards</a></li>										
+					<li><a href="papers.html">Publication <br>& Patents</a></li>
+					<li><a href="teaching.html">Advising <br>& Teaching</a></li>															
+					<li><a href="prof_acts.html">Professional<br> Activities</a></li>					
+					<li><a href="ext_acts.html">Extracurricular<br> Activities</a></li>					
+					<li><a href="cv_minjekim.pdf" target=_blank>CV<br> (PDF)</a></li>					
+					<li><a href="http://scholar.google.com/citations?user=hEfnFKAAAAAJ&hl=en" target=_blank>Google<br> Scholar</a></li>				
+				</ul>
+			</nav>
+
+		
+		<!-- Main -->
+			<div id="main-wrapper">
+				<div id="main" class="container">
+					<div class="row">
+						<div class="12u">
+							<div class="content">
+							
+								<!-- Content -->
+						
+									<article class="box page-content">
+
+<!-- 
+										<header>
+<!~~ 
+											<ul class="meta">
+												<li class="icon fa-clock-o">5 days ago</li>
+												<li class="icon fa-comments"><a href="#">1,024</a></li>
+											</ul>
+ ~~>
+										</header>
+ -->
+
+										<center><img src="demo/bnn_scenario.png" width="700px"></center>
+										
+										A common approach to source separation is to estimate a masking matrix that can classify each pixel of an Short-Time Fourier Transform (STFT) of the mixture signal into the sources. <br><br>
+										<center><img src="demo/bwss_ibm.png" width="900px"><br>
+										<i>An example of IBM-based separation</i></center><br>
+										If we knew the sources, we can simply compare their pixel-wise energy and create the binary masking matrix: “1” for the pixels where speech source pixels are louder than noise and “0” for pixels with louder noise. But, what if we don’t know the sources? Well, you can try to build a supervised machine learning model, such as a deep neural network (which is another topic of research at SAIGE), but for this project we try to formulate it as a posterior estimation problem: estimating the a posteriori probability of a spectrogram pixel belonging to the source of interest given the pixel intensity of the mixture (magnitude) spectrogram. In the neural network-based approaches, the network is trained to predict the posterior probability, which is nothing but a per-pixel logistic regression problem. With Nonnegative Matrix Factorization (NMF) or Probabilistic Latent Semantic Indexing (PLSI), we directly estimate the posterior probability by using pre-trained source-specific dictionaries. More specifically, once you have a dictionary trained from clean speech and another one from noise, we can use them as the fixed basis vectors (or topics) during separation. Therefore, the test time separation process boils down to estimating the activation of those basis vectors. Finally, if we collect all the basis vectors and their temporal activation of a specific source, they reconstruct the contribution of that source to the mixture, which corresponds to the posterior distribution we want.<br><br>
+										They all sounds good, but the procedure involves an EM-like iterative algorithm. Furthermore, obviously all the operations are on floating-point numbers. When it comes to a real-time speech enhancement system running in a small embedded system, this could be a burdensome task, because most of the time those small devices are not with enough resources (e.g. power and memory). To resolve this issue, we redefined this posterior estimation problem by using bitwise operations and binary variables.<br><br>
+										<center><img src="demo/bwss_diagram.png" width="900px"><br>
+										<i>Construction of the WTA hash codes</i></center><br>
+										To this end, we use the concept called “partial rank order metric.” For a given mixture spectrum, we believe that there must be a pair of dictionary items, one per source dictionary1), which mix up the observed spectrum. How are we going to find out them? Maybe we can’t, but we believe that a “part” of this multidimensional vector (the mixture spectrum) must be more similar to the same part of one source than the other one. For example, if there was a high peak in Source A, while Source B doesn’t have one at the same frequency, in the mixture spectrum the peak should be preserved and an algorithm should be able to tell that the peak is from Source A. Based on this assumption, we use random sampling to find out those dominant peaks in the spectra. Let’s say that we select four random frequencies from all Source A, Source B, and mixture spectra. They are random, but the random indices should be fixed for this round. In the above figure, you see that the third frequency in Source A spectrum (the ground truth source spectrum) has a high peak. This will be the winner of the four random dimensions. We record the index of the winner in the table. But, for Source B spectrum, we don’t see a peak at the third sample, and that’s why the fourth sample is the winner of the four instead. Finally, as the third sample in Source A is so high, it’s preserved in the mixture, giving us the same winner index (number three) for the mixture random samples. We repeat this random sampling for L different times to construct an integer vector per spectrum, which look like the picture below.<br><br>
+										<center><img src="demo/bwss_matching.png" width="900px"><br>
+										Once we convert the dictionaries and the mixture spectrum into hashed spectra this way, we can calculate the posterior probability in a bitwise fashion. For a given integer value of the mixture (“1” in the figure), we find out how many “1”s are there in the hashed Source A spectra. Suppose there are four of them. On the other hand, there is only one “1” in Source B hash codes. From here, we can assume that the winner of the four (219th frequency in the original spectrum) is more common in Source A than in B. Therefore, we can calculate the posterior probability for the 219th frequency based on the counts of matches as follows:<br>
+										<center><img src="demo/bwss_eq1.svg" width="900px"></center><br>
+										where <img src="demo/bwss_eq2.svg"> is the masking variable for the 219th frequency at t-th frame (0 for Source B and 1 for Source A), while <img src="demo/bwss_eq3.svg"> is the corresponding (219,t)-th pixel in the mixture spectrogram. <img src="demo/bwss_eq4.svg"> stands for the number of matches that corresponds to the 219th frequency.<br><br>
+										This approach is advantageous because now the dictionary is a set of hash codes, which will save a lot of memory space. The operation for matching can be done in a bitwise fashion (bitwise AND), followed by pop counting. We know this algorithm sounds crazy, because it has no iteration, no real-valued parameters. You may wonder if it works. Let’s check out the results.<br><br>
+										<center><img src="demo/bwss_separation.png" width="900px"></center><br>
+										
+										The figure is the separation result. The speech source is contaminated by a machine gun noise which is a low frequency impulsive sound. Note that the estimated mask can find out the noise component as the masking values near zero (white pixels). It of course doesn’t sound as good as the result from proper real-valued models, but the separation results are surprisingly good considering its compact structure. Let’s listen to them:<br>
+<ul style="list-style-type: disc; margin-left: 2em;"> 
+	<li>Speech + Machine Gun (<a href="demo/bwss_x_machinegun.wav" target=_blank>wav</a>)</li>
+	<li>Denoised Speech (<a href="demo/bwss_sr_machinegun.wav" target=_blank>wav</a>)</li>
+	<br>
+	<li>Speech + Cicadas (<a href="demo/bwss_x_cicadas.wav" target=_blank>wav</a>)</li>
+	<li>Denoised Speech (<a href="demo/bwss_sr_cicadas.wav" target=_blank>wav</a>)</li>
+
+</ul>
+
+<h3>Reference </h3>
+
+Please check out <a href="papers/icml2015_mkim.pdf" target=_blank>my paper in ICML 2015 Workshop on Resource-Efficient Machine Learning</a> for more details. This work has been also selected as a <a href="https://www.qualcomm.com/invention/research/university-relations/innovation-fellowship/finalists" target=_blank>finalist of the Qualcomm Innovation Fellowship 2015</a>. 
+
+		
+		
+										
+
+									</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="container">
+<!-- 
+				<div class="row 200%">
+					<div class="12u">
+
+						<!~~ About ~~>
+							<section>
+								<h2 class="major"><span>What's this about?</span></h2>
+								<p>
+									This is <strong>TXT</strong>, yet another free responsive site template designed by
+									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
+									<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
+									whatever you're working on (personal or commercial), just be sure to give us credit for the design.
+									That's basically it :)
+								</p>
+							</section>
+
+					</div>
+				</div>
+ -->
+				<div class="row 200%">
+					<div class="12u">
+
+						<!-- Contact -->
+							<section>
+								<h2 class="major"><span>Get in touch</span></h2>
+								<ul class="contact">
+									<li><a class="icon fa-linkedin" href="https://www.linkedin.com/in/minje"><span class="label">Linkedin</span></a></li>
+<!-- 
+									<li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+									<li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+									<li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+									<li><a class="icon fa-google-plus" href="#"><span class="label">Google+</span></a></li>
+ -->
+								</ul>
+							</section>
+					
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; Minje Kim. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</footer>
+
+	</body>
+</html>
