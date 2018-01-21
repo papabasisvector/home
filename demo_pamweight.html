@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minje Kim's Home</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo container">
+					<div>
+						<h2><a id="logo">Psychoacoustically Weighted Neural Networks</a></h2>
+
+					</div>
+				</div>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav" class="skel-layers-fixed">
+				<ul>
+					<li><a href="index.html">Home <br>(Contact)</a></li>
+					<li class="current">
+						<a href="">Selected<br>Projects</a>
+						<ul>
+							<li><a href="demo_bnn.html">Bitwise Neural Networks</a></li>
+							<li><a href="demo_bwss.html">Bitwise Source Separation</a></li>							
+							<li><a href="demo_mnn.html">Modular Neural Networks</a></li>
+							<li><a href="demo_cae.html">Collaborative Audio Enhancement</a></li>
+							<li><a href="demo_cderev.html">Collaborative Dereverberation</a></li>							
+							<li><a href="demo_pamweight.html">Psychoacoustically Weighted Networks</a></li>														
+							<li><a href="demo_irregularnmf.html">Irregular Matrix Factorization</a></li>
+							<li><a href="demo_manifold.html">Manifold Preserving Source Separation</a></li>
+							<li><a href="demo_defnmf.html">Deflation Methods for NMF</a></li>							
+							<li><a href="demo_old.html">Some Old Projects</a></li>
+						</ul>
+					</li>
+					<li><a href="education.html">Education<br> & Work</a></li>		
+					<li><a href="awards.html">Honors <br>& Awards</a></li>										
+					<li><a href="papers.html">Publication <br>& Patents</a></li>
+					<li><a href="teaching.html">Advising <br>& Teaching</a></li>															
+					<li><a href="prof_acts.html">Professional<br> Activities</a></li>					
+					<li><a href="ext_acts.html">Extracurricular<br> Activities</a></li>					
+					<li><a href="http://saige.sice.indiana.edu" target=_blank>SAIGE<br>(Research Group)</a></li>			
+					<li><a href="http://scholar.google.com/citations?user=hEfnFKAAAAAJ&hl=en" target=_blank>Google<br> Scholar</a></li>				
+				</ul>
+			</nav>
+
+		
+		<!-- Main -->
+			<div id="main-wrapper">
+				<div id="main" class="container">
+					<div class="row">
+						<div class="12u">
+							<div class="content">
+							
+								<!-- Content -->
+						
+									<article class="box page-content">
+
+<!-- 
+										<header>
+<!~~ 
+											<ul class="meta">
+												<li class="icon fa-clock-o">5 days ago</li>
+												<li class="icon fa-comments"><a href="#">1,024</a></li>
+											</ul>
+ ~~>
+										</header>
+ -->
+
+In SAIGE we've cared so much about the run-time efficiency of deep learning systems. In a typical Deep Neural Network (DNN), there are easily over millions of parameters to work with during a single feedforward pass. What that means is that for a real-time application, there must be millions of floating point operations at every millisecond or so. Very inefficient. Now that everybody knows deep learning can solve complicated problems, it's time to think about the efficiency. We're not talking about the efficiency during training. What we care about is the feedforward process during the test time.<br/>
+<br/>
+There can be a lot of different ways to compress a neural network so that it can enjoy a reduced time and spatial complexity during the run time. One way would be to use a significantly less quantization levels to encode the weights, as shown in the bitwise neural networks [Kim and Smaragdis 2015]. But, there are different kinds of approaches than quantization. In this project, we took a more fundamental audio-centric approach to this problem. The main idea is to tweak the cost function of a DNN (or actually of any machine learning models) so that the network can focus more on the dimensions that are perceptually meaningful (a.k.a. audible) while it doesn't work so hard on the other dimensions that are not. For example, let's suppose that there is a neural network that produces an \(F\)-dimensional cleaned-up speech spectrum \(\hat{M}_{:,t}\in\mathbb{R}^{F\times 1}\) (or an ideal masking vector). Then, a typical neural network cost function with the sum of squared error would define the error between the prediction and the ground truth as follows: \(\frac{1}{2}\sum_f (M_{f,t}-\hat{M}_{f,t})^2\). Every frequency subbands are equally important for the network. Is this true?<br/>
+<br/>
+We think the cost function can be better defined. Psychoacoustics say that not every frequency subband is equally important. An example would be the simultaneous masking effect, which describes the situation where a peak in the spectrum can mask out the other sound components that are nearby and soft. In the neural network perspective, this is related to an important question: why bother trying to reduce the error that's inaudible anyway?<br/>
+<br/>
+<center><img class="wp-image-258" src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/psycho-mask.png" alt="" width="600" height="338" /> </center>
+<br/>
+In the figure, the blue curve is the actual energy of the signal over frequencies. The simultaneous masking effect identifies the global masking threshold (green dotted line) which works like a masker that makes the sound component under the curve inaudible. So, in this figure, the blue shaded area is the only part that are audible as the signal's energy is higher than the threshold. By calculating the energy ratio between the actual power spectral density of the signal and the global masking threshold, we can come up with a weight vector \(H_{:,t}\in\mathbb{R}^{F\times 1}\) that tells us not to focus too much on a certain frequency bins if the weights are low there: \(\frac{1}{2}\sum_f H_{f,t} (M_{f,t}-\hat{M}_{f,t})^2\).<br/>
+<br/>
+<center><img class="wp-image-260 size-full" src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/psycho-weights.png" alt="" width="697" height="410" /><br/> Comparison of power spectral density of an input signal against its perceptual weight matrix (H)</center>
+<br/>
+This relaxes the optimization problem, because during training the network is allowed to create more error when \(H_{f,t}\) is small. We use this conjecture to reduce the structural complexity of DNNs. For example, in the speech denoising senario we can reduce the number of layers and hidden units to produce audio output that is with perceptually similar quality compared to an ordinary DNN. Note that the network will DO create more objective error. But, our argument is the increased error won't be audible.<br/>
+<br/>
+<center><img class="aligncenter wp-image-259" src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/psycho-performance.png" alt="" width="800" height="329" /></center>
+<br/>
+As expected, the Signal-to-Distortion metric doesn't differentiate the two models with and without the psychoacoustic weights. However, the perceptual source separation metric shows a clear advantage of the psychoacoustic weights, because their overall perceptual score doesn't decrease compared to the ordinary with no weighting.<br/>
+<br/>
+
+
+<h3>Reference </h3>
+Check out our recent paper, Kai Zhen, Aswin Sivaraman, Jongmo Sung, and Minje Kim, "On Psychoacoustically Weighted Cost Functions Towards Resource-Efficient Deep Neural Networks for Speech Denoising," (under review) about this project.
+<ul style="list-style-type: disc; margin-left: 2em;">
+<li>Minje Kim and Paris Smaragdis, "<a href="http://minjekim.com/papers/icml2015_mkim.pdf" target="_blank" rel="noopener">Bitwise Neural Networks</a>," <em>International Conference on Machine Learning (ICML) Workshop on Resource-Efficient Machine Learning</em>, Lille, France, Jul. 6-11, 2015.</li>
+</ul>		
+										
+
+									</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="container">
+<!-- 
+				<div class="row 200%">
+					<div class="12u">
+
+						<!~~ About ~~>
+							<section>
+								<h2 class="major"><span>What's this about?</span></h2>
+								<p>
+									This is <strong>TXT</strong>, yet another free responsive site template designed by
+									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
+									<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
+									whatever you're working on (personal or commercial), just be sure to give us credit for the design.
+									That's basically it :)
+								</p>
+							</section>
+
+					</div>
+				</div>
+ -->
+				<div class="row 200%">
+					<div class="12u">
+
+						<!-- Contact -->
+							<section>
+								<h2 class="major"><span>Get in touch</span></h2>
+								<ul class="contact">
+									<li><a class="icon fa-linkedin" href="https://www.linkedin.com/in/minje"><span class="label">Linkedin</span></a></li>
+<!-- 
+									<li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+									<li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+									<li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+									<li><a class="icon fa-google-plus" href="#"><span class="label">Google+</span></a></li>
+ -->
+								</ul>
+							</section>
+					
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; Minje Kim. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</footer>
+
+	</body>
+</html>

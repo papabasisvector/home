@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minje Kim's Home</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo container">
+					<div>
+						<h2><a id="logo">Collaborative Dereverberation</a></h2>
+
+					</div>
+				</div>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav" class="skel-layers-fixed">
+				<ul>
+					<li><a href="index.html">Home <br>(Contact)</a></li>
+					<li class="current">
+						<a href="">Selected<br>Projects</a>
+						<ul>
+							<li><a href="demo_bnn.html">Bitwise Neural Networks</a></li>
+							<li><a href="demo_bwss.html">Bitwise Source Separation</a></li>							
+							<li><a href="demo_mnn.html">Modular Neural Networks</a></li>
+							<li><a href="demo_cae.html">Collaborative Audio Enhancement</a></li>
+							<li><a href="demo_cderev.html">Collaborative Dereverberation</a></li>							
+							<li><a href="demo_pamweight.html">Psychoacoustically Weighted Networks</a></li>																				
+							<li><a href="demo_irregularnmf.html">Irregular Matrix Factorization</a></li>
+							<li><a href="demo_manifold.html">Manifold Preserving Source Separation</a></li>
+							<li><a href="demo_defnmf.html">Deflation Methods for NMF</a></li>							
+							<li><a href="demo_old.html">Some Old Projects</a></li>
+						</ul>
+					</li>
+					<li><a href="education.html">Education<br> & Work</a></li>		
+					<li><a href="awards.html">Honors <br>& Awards</a></li>										
+					<li><a href="papers.html">Publication <br>& Patents</a></li>
+					<li><a href="teaching.html">Advising <br>& Teaching</a></li>															
+					<li><a href="prof_acts.html">Professional<br> Activities</a></li>					
+					<li><a href="ext_acts.html">Extracurricular<br> Activities</a></li>					
+					<li><a href="http://saige.sice.indiana.edu" target=_blank>SAIGE<br>(Research Group)</a></li>			
+					<li><a href="http://scholar.google.com/citations?user=hEfnFKAAAAAJ&hl=en" target=_blank>Google<br> Scholar</a></li>				
+				</ul>
+			</nav>
+
+		
+		<!-- Main -->
+			<div id="main-wrapper">
+				<div id="main" class="container">
+					<div class="row">
+						<div class="12u">
+							<div class="content">
+							
+								<!-- Content -->
+						
+									<article class="box page-content">
+
+<!-- 
+										<header>
+<!~~ 
+											<ul class="meta">
+												<li class="icon fa-clock-o">5 days ago</li>
+												<li class="icon fa-comments"><a href="#">1,024</a></li>
+											</ul>
+ ~~>
+										</header>
+ -->
+
+We have been interested in utilizing user-created recordings for audio enhancement as in [Kim and Smaragdis 2013, Kim and Smaragdis 2016]. You know, these days everybody is carrying his or her own mobile devices and recording everything. And, we know that using multiple recordings is helpful for audio enhancement. Although this sounds like a natural extension, it's not actually that straightforward due to the heterogeneousity of the "sensor array" we're talking about. If we think of this set of user devices as a sensor array, it's more likely to be an "ad-hoc" sensor array, because they are loosely connected and often too different from each other. For example, they are not synchronized. Furthermore, each recording can suffer from its own individual artifact and interference which don't appear in the other recording.
+
+In this project we focus on another collaborative algorithm to solve the dereverberation problem. Most of the time in the real-world recording environment, it's impossible to get the dry source. The recordings are almost always a reverberation of the source. It happens when the walls are reflecting the sound source and create many delayed versions of the source, which are eventually added up at the microphone (think of your speech in a bathroom or a cave). It is a serious kind of artifact that deteriorate the speech recognition performance. We can think of reverberation as a filtering process—the dry speech source is convolved with a filter of impulse train, where the temporal position and height of an impulse define the delay and the strength of the particular delayed arrival. What we do in this project is to make use of multiple recordings of the same speech for a better dereverberation. Since the recordings are captured in the different locations in the room, their reverberation filters are different from each other, although an algorithm has to find a common source across all the dereverberation models.
+
+<center><img src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/colder_reverb-1.png" alt="" width="500" height="310" /></center>
+
+To this end, we extend the Nonnegative-Tensor-Tactorization (NTF)-based multi-channel dereverberation model proposed by [Mirsamadi et al. 2014]—where channel-specific speech dereveberation tasks are linked by jointly estimating the speech source across channels. Because an ordinary NTF model has a natural ambiguity for this problem, i.e. the reverberation filter can be learned in the source estimation, we further regularize it by using an additional Nonnegative Matrix Factorization (NMF) along with sparsity and total variation to add prior knowledge about dry speech to the source reconstruction.
+
+<center><img class="wp-image-237" src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/colder_diagram.png" alt="" width="600" height="198" /><br/> The proposed NTF model with regularization</center>
+
+We ran the experiment on three different room types, with reverberation decay times (T60), respectively, of 0.6, 1.2, and 1.6 seconds. Speech recordings with longer decay times are challenging cases for applications such as automatic speech recognition. The input to the program consists of monophonic recordings of four sensors placed in different parts of the room. The output consists of a single dry-signal estimate. This page presents example audio results for one source/sensor configuration per room along with the corresponding average STOI and SNR values. We show the results of three different dereverberation models: the baseline (NTF) model [Mirsamadi et al. 2014] adapted to an objective function using KL-divergence instead of Euclidean distance, the NTF model we extended with an NMF speech prior, and our proposed model of NTF with an NMF speech prior and regularization.
+
+<center><img src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/colder_snr.png" alt="" width="500" height="269" /></center>
+
+<center><img src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/colder_stoi.png" alt="" width="500" height="261" /></center>
+
+&nbsp;
+
+<ul style="list-style-type: disc; margin-left: 2em;"> 
+<li>Input reverberant audio signals (four channels)
+<h6>T60=0.6 sec.</h6>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa1_1_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa1_2_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa1_3_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa1_4_norm.wav" type="audio/wav"></audio><br/>
+<h6>T60=1.2 sec.</h6>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa44_1_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa44_2_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa44_3_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa44_4_norm.wav" type="audio/wav"></audio><br/>
+<h6>T60=1.6 sec.</h6>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa84_1_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa84_2_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa84_3_norm.wav" type="audio/wav"></audio><br/>
+<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/sa84_4_norm.wav" type="audio/wav"></audio><br/>
+</li>
+</ul>
+<ul style="list-style-type: disc; margin-left: 2em;"> 
+<li>Reconstructions
+<h6>T60=0.6 sec.</h6>
+<ul style="list-style-type: disc; margin-left: 2em;">
+ 	<li>Baseline (KL-div NTF)<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/nonmf_norm.wav" type="audio/wav"></audio></li>
+ 	<li>NTF with speech prior only<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/nmf_norm.wav" type="audio/wav"></audio></li>
+ 	<li>NTF with speech prior, sparsity, and total variance<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/nmfreg_norm.wav" type="audio/wav"></audio></li>
+</ul>
+<h6>T60=1.2 sec.</h6>
+<ul style="list-style-type: disc; margin-left: 2em;">
+ 	<li>Baseline (KL-div NTF)<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/t60-1.2-nonmf_norm.wav" type="audio/wav"></audio></li>
+ 	<li>NTF with speech prior only<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/t60-1.2-nmf_norm.wav" type="audio/wav"></audio></li>
+ 	<li>NTF with speech prior, sparsity, and total variance<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/t60-1.2-nmfreg_norm.wav" type="audio/wav"></audio></li>
+</ul>
+<h6>T60=1.6 sec.</h6>
+<ul style="list-style-type: disc; margin-left: 2em;">
+ 	<li>Baseline (KL-div NTF)<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/t60-1.6-nonmf_norm.wav" type="audio/wav"></audio></li>
+ 	<li>NTF with speech prior only<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/t60-1.6-nmf_norm.wav" type="audio/wav"></audio></li>
+ 	<li>NTF with speech prior, sparsity, and total variance<audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/t60-1.6-nmfreg_norm.wav" type="audio/wav"></audio></li>
+</ul>
+</li>
+</ul>
+&nbsp;
+
+<h3>Reference </h3>
+Check out our recent paper, Sanna Wager and Minje Kim (2018), "Collaborative speech dereverberation: regularized tensor factorization for crowdsourced multi-channel recordings," (under review). <a href="http://saige.sice.indiana.edu/wp-content/uploads/2017/11/icassp2018_swager.pdf">pdf</a> for more details.
+<ul style="list-style-type: disc; margin-left: 2em;">
+<li><u>Minje Kim</u> and Paris Smaragdis (2013), "<a href="http://minjekim.com/papers/icassp2013_mkim.pdf" target="_blank" rel="noopener">Collaborative Audio Enhancement Using Probabilistic Latent Component Sharing</a>," in Proceedings of the <em>IEEE International Conference on Acoustics, Speech, and Signal Processing (<b>ICASSP</b>)</em>, Vancouver, BC, Canada, May 26-31, 2013.</li>
+<li><u>Minje Kim</u> and Paris Smaragdis (2016), "<a href="http://minjekim.com/papers/icassp2016_mkim.pdf" target="_blank" rel="noopener">Efficient Neighborhood-Based Topic Modeling for Collaborative Audio Enhancement on Massive Crowdsourced Recordings</a>," in Proceedings of the <em>IEEE International Conference on Acoustics, Speech, and Signal Processing (<b>ICASSP</b>)</em>, Shanghai, China, March 20-25, 2016.</li>
+<li>Mirsamadi, Seyedmahdad, and John HL Hansen. "Multichannel speech dereverberation based on convolutive nonnegative tensor factorization for ASR applications." Fifteenth Annual Conference of the International Speech Communication Association. 2014.</li>		
+</ul>		
+										
+
+									</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="container">
+<!-- 
+				<div class="row 200%">
+					<div class="12u">
+
+						<!~~ About ~~>
+							<section>
+								<h2 class="major"><span>What's this about?</span></h2>
+								<p>
+									This is <strong>TXT</strong>, yet another free responsive site template designed by
+									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
+									<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
+									whatever you're working on (personal or commercial), just be sure to give us credit for the design.
+									That's basically it :)
+								</p>
+							</section>
+
+					</div>
+				</div>
+ -->
+				<div class="row 200%">
+					<div class="12u">
+
+						<!-- Contact -->
+							<section>
+								<h2 class="major"><span>Get in touch</span></h2>
+								<ul class="contact">
+									<li><a class="icon fa-linkedin" href="https://www.linkedin.com/in/minje"><span class="label">Linkedin</span></a></li>
+<!-- 
+									<li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+									<li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+									<li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+									<li><a class="icon fa-google-plus" href="#"><span class="label">Google+</span></a></li>
+ -->
+								</ul>
+							</section>
+					
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; Minje Kim. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</footer>
+
+	</body>
+</html>
