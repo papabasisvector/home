@@ -6,16 +6,15 @@ http://minjekim.com/demo_defnmf.html
 http://minjekim.com/demo_irregularnmf.html
 http://minjekim.com/demo_manifold.html
 http://minjekim.com/demo_old.html
-http://minjekim.com/education.html
 http://minjekim.com/ext_acts.html
 http://minjekim.com/index.html
 http://minjekim.com/papers.html
-http://minjekim.com/prof_acts.html
-http://minjekim.com/research.html
 http://minjekim.com/cv_minjekim.pdf
 http://minjekim.com/papers/aes2008_mkim.pdf
 http://minjekim.com/papers/aes2011_mkim.pdf
+http://minjekim.com/papers/cogsci2018_msetzler.pdf
 http://minjekim.com/papers/etrij2011_skbeack.pdf
+http://minjekim.com/papers/eusipco2018_swager.pdf
 http://minjekim.com/papers/globalsip2014_mkim.pdf
 http://minjekim.com/papers/ica2006_mkim.pdf
 http://minjekim.com/papers/icann2005_mkim.pdf
@@ -28,6 +27,8 @@ http://minjekim.com/papers/icassp2015_mkim.pdf
 http://minjekim.com/papers/icassp2016_mkim.pdf
 http://minjekim.com/papers/icassp2017_mkim.pdf
 http://minjekim.com/papers/icassp2017_swager.pdf
+http://minjekim.com/papers/icassp2018_lguo.pdf
+http://minjekim.com/papers/icassp2018_mkim.pdf
 http://minjekim.com/papers/iccps2015_ygao.pdf
 http://minjekim.com/papers/icml2013_mkim.pdf
 http://minjekim.com/papers/icml2015_mkim.pdf
@@ -35,6 +36,7 @@ http://minjekim.com/papers/icpr2006_mkim.pdf
 http://minjekim.com/papers/interspeech2014_dliu.pdf
 http://minjekim.com/papers/isce2007_mkim.pdf
 http://minjekim.com/papers/isce2007_syang.pdf
+http://minjekim.com/papers/islped2017_ljiang.pdf
 http://minjekim.com/papers/ismir2014_phuang.pdf
 http://minjekim.com/papers/jstsp2011_mkim.pdf
 http://minjekim.com/papers/lvaica2015_mkim.pdf
@@ -43,6 +45,7 @@ http://minjekim.com/papers/mlsp2012_mkim.pdf
 http://minjekim.com/papers/mlsp2013_mkim.pdf
 http://minjekim.com/papers/nips2014_mkim.pdf
 http://minjekim.com/papers/phd_dissertation_mkim.pdf
+http://minjekim.com/papers/rtcsa2018_mbechtel.pdf
 http://minjekim.com/papers/spl2015_mkim.pdf
 http://minjekim.com/papers/taslp2015_phuang.pdf
 http://minjekim.com/papers/waspaa2013_psmaragdis.pdf

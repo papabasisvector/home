@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minje Kim's Home</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo container">
+					<div>
+						<h2><a id="logo">Deep Autotuner</a></h2>
+
+					</div>
+				</div>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav" class="skel-layers-fixed">
+				<ul>
+					<li><a href="index.html">Home <br>(Contact Info.)</a></li>
+					<li><a href="papers.html">Publication <br>& Patents</a></li>
+					<li><a href="cv.html">CV <br>(HTML)</a></li>										
+					<li><a href="cv_minjekim.pdf">CV <br>(PDF)</a></li>
+					<li><a href="ext_acts.html">Extracurricular<br> Activities</a></li>
+					<li><a href="http://saige.sice.indiana.edu" target=_blank>SAIGE<br>(Research Group)</a></li>
+					<li><a href="http://scholar.google.com/citations?user=hEfnFKAAAAAJ&hl=en" target=_blank>Google<br> Scholar</a></li>	
+					<li class="current">
+						<a href="">Projects<br> (Demo)</a>
+						<ul>
+							<li><a href="demo_bnn.html">Bitwise Neural Networks</a></li>
+							<li><a href="demo_dat.html">Deep Autotuner</a></li>							
+							<li><a href="demo_bwss.html">Bitwise Source Separation</a></li>							
+							<li><a href="demo_mnn.html">Modular Neural Networks</a></li>
+							<li><a href="demo_cae.html">Collaborative Audio Enhancement</a></li>
+							<li><a href="demo_cderev.html">Collaborative Dereverberation</a></li>							
+							<li><a href="demo_pamweight.html">Psychoacoustically Weighted Networks</a></li>																					
+							<li><a href="demo_irregularnmf.html">Irregular Matrix Factorization</a></li>
+							<li><a href="demo_manifold.html">Manifold Preserving Source Separation</a></li>
+							<li><a href="demo_defnmf.html">Deflation Methods for NMF</a></li>							
+							<li><a href="demo_old.html">Some Old Projects</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+			</nav>
+
+		
+		<!-- Main -->
+			<div id="main-wrapper">
+				<div id="main" class="container">
+					<div class="row">
+						<div class="12u">
+							<div class="content">
+							
+								<!-- Content -->
+						
+									<article class="box page-content">
+
+
+ 										<p>Have you ever wished if you were a good singer? Some people believe that it's a natural ability that one can never acquire by practice (like my wife who's a natural-born good singer and looks down on me in that regard). I disagree with her, but I admit that I'm not a good singer and failed to improve my singing over my entire life so far. Instead, I decided to get some help from AI to improve my singing. </p></br>
+										<p>My group SAIGE recently developed a deep learning system called "<em><strong>Deep Autotuner</strong></em>," which takes an out-of-tune singing voice as its input and spits out an estimated in-tune version. How does it know how much a sung melody is out of tune? Well, as we humans can catch it even for the songs that have never been known to the listener, I suspect that it is based on a comparison between the main melody and the accompaniment. If the singing voice (or any other instrument) is off from the harmony, human brains are trained to recognize the mismatch as dissonance. Therefore, our deep learning system is trained to map an out-of-tune singing voice signal and its accompaniment signal to the in-tune version (i.e. the amount of pitch shift).</p></br>
+										<p>We were very excited in the beginning, because it's a cool idea--a fully data-driven approach to autotuning, a true <strong><em>AUTO</em></strong>tuning system! However, it turned out that it is not easy to achieve a good performance due to the lack of data. We basically need a very good singing-voice performance as the target of the network as well as its out-of-tune version to simulate user's singing. Luckily for us, <a rel="noreferrer noopener" aria-label="Smule, Inc. (opens in a new tab)" href="http://smule.com" target="_blank">Smule, Inc.</a> became interested in this problem, and kindly provided us with their <a rel="noreferrer noopener" aria-label="data (opens in a new tab)" href="http://CCRMA.stanford.edu/damp" target="_blank">data</a> and advice during Sanna's internship there. </p></br>
+										<p>Smule's Intonation dataset includes 4702 quality singing voice tracks by 3556 unique singers accompanied by 474 unique arrangements. Having them as the target, we came up with an artificially corrupted version of each of them, by detuning the original singing voice off by up to one semitone, as the simulated input to the system. A CNN+GRU network architecture working on CQT was adopted. Below are the pitch contours over frames. </p></br>
+										<center><img src="demo/dat_pitch.png" width="900px"></center>
+										<p>Check out the green curve, the deep autotuned pitch correction, is closer to the original pitch contour (black line) than the out-of-tune singing (red).</p></br>
+										<p>Please check out the audio demo below. It's still a bit robotic and noisy mainly due to the phase synthesis part, but we can feel that the deep autotuner is up and running!</p>
+										</br>
+										<ul style="list-style-type: disc; margin-left: 2em;"> 
+										<h4>Example 1</h4>
+										<ul style="list-style-type: disc; margin-left: 2em;">
+											<li>Input out-of-tune singing</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/shifted_mix_1003742086_1796994764.mp3" type="audio/mp3"></audio></li>
+											<li>Deep autotuned singing</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/corrected_mix_1003742086_1796994764.mp3" type="audio/mp3"></audio></li>
+											<li>Target singing (ground-truth)</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/test_mix_1003742086_1796994764.mp3" type="audio/mp3"></audio></li>
+										</ul>
+										<h4>Example 2</h4>
+										<ul style="list-style-type: disc; margin-left: 2em;">
+											<li>Input out-of-tune singing</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/shifted_mix_988910411_2026111727.mp3" type="audio/mp3"></audio></li>
+											<li>Deep autotuned singing</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/corrected_mix_988910411_2026111727.mp3" type="audio/mp3"></audio></li>
+											<li>Target singing (ground-truth)</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/test_mix_988910411_2026111727.mp3" type="audio/mp3"></audio></li>
+										</ul>
+										<h4>Example 3</h4>
+										<ul style="list-style-type: disc; margin-left: 2em;">
+											<li>Input out-of-tune singing</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/shifted_mix_1019634663_1688143669.mp3" type="audio/mp3"></audio></li>
+											<li>Deep autotuned singing</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/corrected_mix_1019634663_1688143669.mp3" type="audio/mp3"></audio></li>
+											<li>Target singing (ground-truth)</br> <audio controls><source src="http://saige.sice.indiana.edu/wp-content/uploads/2019/01/test_mix_1019634663_1688143669.mp3" type="audio/mp3"></audio></li>
+										</ul></ul>
+										
+										
+<br/>
+
+<h3>Reference </h3>
+Check out our paper about this:</br>
+Sanna Wager, George Tzanetakis, Cheng-i Wang, Lijiang Guo, Aswin Sivaraman, and Minje Kim, "<strong>Deep autotuner: A data-driven approach to natural-sounding pitch correction for singing voice in karaoke performances</strong>," <em>submitted for publication</em>  [<a href="http://minjekim.com/papers/icassp2019_swager.pdf">pdf</a>]
+</br></br>
+The Intonation dataset:</br>
+Sanna Wager, George Tzanetakis, Stefan Sullivan, Cheng-i Wang, John Shimmin, Minje Kim, Perry Cook, "<strong>Intonation: A Dataset of Quality Vocal Performances Refined by Spectral Clustering on Pitch Congruence</strong>," <em>submitted for publication</em> [<a href="http://minjekim.com/papers/icassp2019_swager.pdf">pdf</a>]
+		
+		
+										
+
+									</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="container">
+<!-- 
+				<div class="row 200%">
+					<div class="12u">
+
+						<!~~ About ~~>
+							<section>
+								<h2 class="major"><span>What's this about?</span></h2>
+								<p>
+									This is <strong>TXT</strong>, yet another free responsive site template designed by
+									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
+									<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
+									whatever you're working on (personal or commercial), just be sure to give us credit for the design.
+									That's basically it :)
+								</p>
+							</section>
+
+					</div>
+				</div>
+ -->
+				<div class="row 200%">
+					<div class="12u">
+
+						<!-- Contact -->
+							<section>
+								<h2 class="major"><span>Get in touch</span></h2>
+								<ul class="contact">
+									<li><a class="icon fa-linkedin" href="https://www.linkedin.com/in/minje"><span class="label">Linkedin</span></a></li>
+<!-- 
+									<li><a class="icon fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+									<li><a class="icon fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+									<li><a class="icon fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+									<li><a class="icon fa-google-plus" href="#"><span class="label">Google+</span></a></li>
+ -->
+								</ul>
+							</section>
+					
+					</div>
+				</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; Minje Kim. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</footer>
+
+	</body>
+</html>
