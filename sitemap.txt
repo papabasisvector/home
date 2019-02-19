@@ -29,6 +29,8 @@ http://minjekim.com/papers/icassp2017_mkim.pdf
 http://minjekim.com/papers/icassp2017_swager.pdf
 http://minjekim.com/papers/icassp2018_lguo.pdf
 http://minjekim.com/papers/icassp2018_mkim.pdf
+http://minjekim.com/papers/icassp2019_skim.pdf
+http://minjekim.com/papers/icassp2019_swager.pdf
 http://minjekim.com/papers/iccps2015_ygao.pdf
 http://minjekim.com/papers/icml2013_mkim.pdf
 http://minjekim.com/papers/icml2015_mkim.pdf
