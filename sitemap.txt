@@ -12,9 +12,7 @@ https://minjekim.com/papers.html
 https://minjekim.com/cv_minjekim.pdf
 https://minjekim.com/papers/aes2008_mkim.pdf
 https://minjekim.com/papers/aes2011_mkim.pdf
-https://minjekim.com/papers/cogsci2018_msetzler.pdf
 https://minjekim.com/papers/etrij2011_skbeack.pdf
-https://minjekim.com/papers/eusipco2018_swager.pdf
 https://minjekim.com/papers/globalsip2014_mkim.pdf
 https://minjekim.com/papers/ica2006_mkim.pdf
 https://minjekim.com/papers/icann2005_mkim.pdf
@@ -25,12 +23,6 @@ https://minjekim.com/papers/icassp2014_jtraa.pdf
 https://minjekim.com/papers/icassp2014_phuang.pdf
 https://minjekim.com/papers/icassp2015_mkim.pdf
 https://minjekim.com/papers/icassp2016_mkim.pdf
-https://minjekim.com/papers/icassp2017_mkim.pdf
-https://minjekim.com/papers/icassp2017_swager.pdf
-https://minjekim.com/papers/icassp2018_lguo.pdf
-https://minjekim.com/papers/icassp2018_mkim.pdf
-https://minjekim.com/papers/icassp2019_skim.pdf
-https://minjekim.com/papers/icassp2019_swager.pdf
 https://minjekim.com/papers/iccps2015_ygao.pdf
 https://minjekim.com/papers/icml2013_mkim.pdf
 https://minjekim.com/papers/icml2015_mkim.pdf
@@ -38,7 +30,6 @@ https://minjekim.com/papers/icpr2006_mkim.pdf
 https://minjekim.com/papers/interspeech2014_dliu.pdf
 https://minjekim.com/papers/isce2007_mkim.pdf
 https://minjekim.com/papers/isce2007_syang.pdf
-https://minjekim.com/papers/islped2017_ljiang.pdf
 https://minjekim.com/papers/ismir2014_phuang.pdf
 https://minjekim.com/papers/jstsp2011_mkim.pdf
 https://minjekim.com/papers/lvaica2015_mkim.pdf
@@ -47,7 +38,6 @@ https://minjekim.com/papers/mlsp2012_mkim.pdf
 https://minjekim.com/papers/mlsp2013_mkim.pdf
 https://minjekim.com/papers/nips2014_mkim.pdf
 https://minjekim.com/papers/phd_dissertation_mkim.pdf
-https://minjekim.com/papers/rtcsa2018_mbechtel.pdf
 https://minjekim.com/papers/spl2015_mkim.pdf
 https://minjekim.com/papers/taslp2015_phuang.pdf
 https://minjekim.com/papers/waspaa2013_psmaragdis.pdf
