@@ -1,0 +1,30 @@
+<Files "interspeech2019_kzhen.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/interspeech2019_kzhen.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "hpml2019_vabeykoon.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/hpml2019_vabeykoon.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "hpbdc2019_gfox.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/hpbdc2019_gfox.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "icassp2019_skim.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/icassp2019_skim.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "icassp2019_swager.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/interspeech2019_swager.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "rtcsa2018_mbechtel.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/rtcsa2018_mbechtel.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "eusipco2018_swager.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/eusipco2018_swager.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "cogsci2018_msetzler.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/cogsci2018_msetzler.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "icassp2018_lguo.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/icassp2018_lguo.pdf>; rel=\"cannonical\""
+<\Files>
+<Files "icassp2018_mkim.pdf">
+	Header add Link "<https://saige.sice.indiana.edu/wp-content/uploads/icassp2018_mkim.pdf>; rel=\"cannonical\""
+<\Files>
